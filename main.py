@@ -8,6 +8,10 @@ class PingHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b'Streaks Bot is alive!')
 
+    def do_HEAD(self):
+        self.send_response(200)
+        self.end_headers()
+
 def run_server():
     httpd = HTTPServer(('0.0.0.0', 8080), PingHandler)
     httpd.serve_forever()
